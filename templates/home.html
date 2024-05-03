@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodMarket</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .judul {
+            color: white;
+            text-align: center;
+            padding: 30px 0px; 
+            display: inline-block; 
+            width: max-content; 
+            background-color: green; 
+            margin: 12; 
+            box-sizing: border-box;
+        }
+        body {
+            background-color: green;
+        }
+        .navbar {
+            background-color: #e7e8e3;
+        }
+        .navbar a {
+            color: #1ba708;
+            padding: 14px 20px;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: rgb(18, 210, 69);
+        }
+        .foto1 {
+            width: 30%;
+            display: block;
+            margin: 0 auto;
+        }
+        .list-produk {
+            list-style: none;
+        }
+        .judul-produk {
+            color: rgb(20, 219, 43);
+        }
+        .card-img-top {
+            width: 100%;
+            height: auto;
+        }
+        /* Tambahkan kelas untuk mengatur posisi peta */
+        .center-map {
+            text-align: center;
+        }
+        .map-container {
+            width: 100%;
+            max-width: 1200px; /* Maksimum lebar peta */
+            margin: 0 auto; /* Meletakkan peta di tengah */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <header style="background-color: green;"></header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="color: green;">FoodMarket</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#detail" style="color: green;">Detail</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#keranjang" style="color: green;">Keranjang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#checkout" style="color: green;">Checkout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#kontak" style="color: green;">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<h1 class="judul">Welcome to FoodMarket!</h1>
+
+<div class="container">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="{{ product.image.url }}" alt="Product Image">
+                <div class="card-body">
+                    <h2 class="card-title"style="color: green;">{{ product.name }}</h2>
+                    <p class="card-text" style="color: green;">Category: {{ product.category }}</p>
+                    <p class="card-text" style="color: green;">Price: Rp{{ product.price }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{% url 'product_detail' product_id=product.id %}" class="btn btn-sm btn-outline-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<footer class="footer bg-light">
+    <div class="container">
+        <nav class="menu">
+            <a href="#" style="color: green;">Home</a>
+            <a href="#" style="color: green;">Detail</a>
+            <a href="#" style="color: green;">Keranjang</a>
+            <a href="#" style="color: green;">Checkout</a>
+            <a href="#" style="color: green;">Kontak</a>
+        </nav>
+    </div>
+    <style>
+        .footer {
+            padding: 20px 0; 
+            text-align: center; 
+        }
+        .menu a {
+            margin: 0 10px; 
+            text-decoration: none; 
+        }
+    </style>
+</footer>
+
+
+
+
+</body>
+</html>
